@@ -74,6 +74,11 @@ const products = {
         },
     ],
 };
+let buttons = document.querySelectorAll('button');
+let tableOfProducts = document.querySelector('.products');
+buttons.forEach((button) => {
+    button.addEventListener('click', clickHandler);
+})
 
 
 /**
@@ -82,10 +87,11 @@ const products = {
  */
 function clickHandler(event) {
     //вам нужно очищать содержимое .products
-    
+
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    tableOfProducts.innerHTML = '';
+    showCategory(event.target.getAttribute('data-type'))
 }
 
 /**
@@ -96,7 +102,9 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    products[category].forEach((product) => {
+        tableOfProducts.insertAdjacentHTML('afterbegin', getProductMarkup(product));
+    })
 }
 
 /**
@@ -109,5 +117,9 @@ function showCategory(category) {
  * в верху этого файла.
  */
 function getProductMarkup(product) {
-
+    let textHTML = `<div>${product.name}</div>
+    <img src="${product.imageUrl}" alt="">
+    <div>${product.price}</div>
+    <a href="https://example.com/producs/${product.id}">Подробнее</a>`
+    return textHTML;
 }
