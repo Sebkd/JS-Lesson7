@@ -18,6 +18,8 @@
 
     <script>
         let div = document.querySelector('div');
+        for (let percent = 0; percent <= 100; percent++)
+            setTimeout(changeProgress, 50 * percent, percent);
 
         /**
          * @param {number} percent величина процента от 0 до 100.
@@ -26,7 +28,7 @@
             div.style.background = `linear-gradient(90deg, rgba(38,255,162,1) ${percent}%, rgba(255,255,255,1) ${percent}%)`;
         }
 
-        /* 
+        /*
         Вам нужно в цикле for создать отложенные вызовы с помощью setTimeout. Т.е. в цикле должны
         быть вызовы функции setTimeout.
         1. В условии цикла должно быть i <= 100, т.к. именно значение счетчика будем
@@ -35,7 +37,7 @@
         можете также добавить какой-нибудь коэффициент, чтобы подобрать желаемую скорость
         заполнения прогресс-бара.
         */
-        
+
 
     </script>
 </body>
