@@ -26,7 +26,14 @@
     -->
 
     <script>
-        
+        let bing = new Audio('notification.mp3')
+        let myButton = document.querySelector('button');
+        let message = document.querySelector('.message');
+        myButton.addEventListener('click', () => {
+            bing.play();
+            let pointYMessage = - message.clientHeight;
+            message.style = `transform: translateY(calc(${pointYMessage}px - 20px));`
+        })
     </script>
 </body>
 
